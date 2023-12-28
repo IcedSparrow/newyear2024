@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nowy Rok 2024</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="fade-in">
+        <video autoplay loop muted>
+            <source src="star.mp4" type="video/mp4">
+            <!-- Dodaj odpowiednie formaty wideo dla różnych przeglądarek -->
+            Your browser does not support the video tag.
+        </video>
+        <h1 class="text-animation" id="welcome-message"> <span id="countdown"></span></h1>
+
+        <script>
+            // Funkcja do uzyskiwania aktualnej daty i czasu w formacie "RRRR-MM-DD HH:MM:SS"
+            function getCurrentDateTimeString() {
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const day = String(now.getDate()).padStart(2, '0');
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+                return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+            }
+    
+            // Odliczanie do Nowego Roku 2024
+            const countdownElement = document.getElementById('countdown');
+    
+            function updateCountdown() {
+                const now = new Date();
+                const targetDate = new Date('January 1, 2024 00:00:10');
+    
+                const timeDifference = targetDate - now;
+    
+                if (timeDifference > 0) {
+                    const weeks = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 7));
+                    const days = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+    
+                    countdownElement.innerHTML = `
+                        Do Nowego Roku pozostało jeszcze: <br>
+                        ${weeks} tygodni ${days} dni ${hours} godzin ${minutes} minut ${seconds} sekund`;
+                } else {
+                    countdownElement.textContent = 'Witaj w Nowym Roku 2024!';
+                    clearInterval(countdownInterval);
+                }
+            }
+    
+            // Aktualizacja co sekundę
+            const countdownInterval = setInterval(updateCountdown, 1000);
+    
+            // Wyświetlenie aktualnej daty i czasu
+            const currentDateTimeElement = document.getElementById('current-datetime');
+            if (currentDateTimeElement) {
+                setInterval(() => {
+                    currentDateTimeElement.textContent = `Aktualna data i czas: ${getCurrentDateTimeString()}`;
+                }, 1000);
+            }
+        </script>
+    </header>
+    
+
+    <nav class="fade-in">
+        <a href="#noworoczne-zyczenia">Życzenia</a>
+        <a href="#plan-na-nowy-rok">Plan na Nowy Rok</a>
+        <a href="#noworoczne-postanowienia">Postanowienia</a>
+        <a href="#promocja-ebooka">Ebook</a>
+    </nav>
+
+    <section id="noworoczne-zyczenia" class="fade-in">
+        <h2>Życzenia na Nowy Rok</h2>
+        <p class="nowy-rok-zyczenia">Tu znajdziesz moje życzenia na Nowy Rok ode mnie</p>
+
+        <!-- Slider z życzeniami -->
+        <div id="zyczenia-slider" class="slider">
+            <div class="zyczenie">
+                <p>
+                    🎉 Niech Nowy Rok przyniesie Ci mnóstwo radosnych chwil, spełnionych marzeń i niezapomnianych przeżyć. 🌟 
+                    Niech będzie pełen zdrowia, sukcesów oraz nowych, inspirujących wyzwań, które pozwolą Ci rozwijać się i osiągać coraz to większe sukcesy. 💪
+                </p>
+            </div>
+            <div class="zyczenie">
+                <p>
+                    🌈 Życzę Ci, aby każdy dzień Nowego Roku był pełen pozytywnej energii, uśmiechów na twarzy oraz ciekawych spotkań. 🚀 
+                    Niech to będzie czas pełen odkryć, gdzie każdy krok będzie krokiem w stronę spełnienia, a każdy wysiłek przyniesie Ci satysfakcję i radość. 😊
+                </p>
+            </div>
+            <div class="zyczenie">
+                <p>
+                    🌟 Niech Nowy Rok będzie dla Ciebie czasem inspiracji do nowych pomysłów, twórczych działań i osiągania postawionych celów. 🚀 
+                    Życzę Ci, abyś odkrył w sobie siłę do pokonywania trudności, a każdy sukces dodawał Ci motywacji do dalszego doskonalenia siebie i swojego życia. 🎯
+                </p>
+            </div>
+            <!-- Dodaj więcej życzeń według potrzeb -->
+        </div>
+        <script>
+            const zyczeniaSlider = document.getElementById('zyczenia-slider');
+
+            if (zyczeniaSlider) {
+                gsap.from('.zyczenie', {
+                    opacity: 0,
+                    y: 50,
+                    stagger: 0.2,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '.zyczenie',
+                        start: 'top 80%',
+                    },
+                });
+
+                // Ustawienia dla slidera Slick Carousel
+                $(zyczeniaSlider).slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 4000,
+                    dots: true,
+                    arrows: false,
+                    fade: true,
+                });
+            }
+        </script>
+    </section>
+
+
+    <section id="plan-na-nowy-rok" class="fade-in">
+        <h2>Wasze Plan na Nowy Rok</h2>
+        <p>Podziel się swoimi postępami na Nowy Rok i zobacz, jakie cele udało Ci się osiągnąć.</p>
+    
+        <!-- Formularz Planu na Nowy Rok -->
+        <form id="plan-form">
+            <label for="plan">Twój plan na rok 2024:</label>
+            <textarea id="plan" name="plan" rows="4" placeholder="Wpisz swoje cele i zadania na rok 2024..."></textarea>
+            <br><br>
+            <button type="submit">Dodaj do planu</button>
+            <br><br>
+            <label for="plan">Twoje cele i zadania na rok 2024:</label>
+        </form>
+    
+        <!-- Lista planów -->
+        <ul id="lista-planow">
+            <!-- Tutaj będą pojawiać się dodane cele i zadania -->
+        </ul>
+        <script>
+            const planForm = document.getElementById('plan-form');
+            const listaPlanow = document.getElementById('lista-planow');
+            
+            // Pobranie planów z local storage
+            const savedPlans = JSON.parse(localStorage.getItem('savedPlans')) || [];
+            
+            // Funkcja aktualizująca listę planów
+            function updatePlanList() {
+                listaPlanow.innerHTML = ''; // Wyczyszczenie listy przed aktualizacją
+            
+                savedPlans.forEach((plan, index) => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = plan;
+            
+                    // Przycisk usuwania
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Usuń';
+                    removeButton.className = 'remove-button'; // Dodanie klasy dla łatwiejszego stylowania
+                    removeButton.style.backgroundColor = 'red'; // Kolor czerwony
+                    removeButton.addEventListener('click', () => removePlan(index));
+            
+                    listItem.appendChild(removeButton);
+                    listaPlanow.appendChild(listItem);
+                });
+            }
+            
+            // Aktualizacja listy przy załadowaniu strony
+            updatePlanList();
+            
+            // Obsługa dodawania planów
+            if (planForm && listaPlanow) {
+                planForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+            
+                    const planInput = document.getElementById('plan');
+                    const planValue = planInput.value.trim();
+            
+                    if (planValue !== '') {
+                        // Dodanie do local storage
+                        savedPlans.push(planValue);
+                        localStorage.setItem('savedPlans', JSON.stringify(savedPlans));
+            
+                        // Aktualizacja listy na stronie
+                        updatePlanList();
+            
+                        // Wyczyszczenie pola po dodaniu do listy
+                        planInput.value = '';
+                    }
+                });
+            }
+            
+            // Funkcja usuwająca plan z listy i z local storage
+            function removePlan(index) {
+                savedPlans.splice(index, 1);
+                localStorage.setItem('savedPlans', JSON.stringify(savedPlans));
+                updatePlanList(); // Aktualizacja listy po usunięciu
+            }
+        </script>
+    </section>
+    
+
+
+
+
+<section id="noworoczne-postepowanie" class="fade-in">
+    <h2>Moje Noworoczne Postępy</h2>
+    <p>Tutaj znajdziesz część moich planów/postanowień na rok 2024</p>
+    <!--<p>Podziel się swoimi postępami na Nowy Rok i zobacz, jakie cele udało Ci się osiągnąć.</p>-->
+
+    <!-- Lista postępów -->
+    <table id="lista-postepow">
+        <tr>
+            <th>Cel</th>
+            <th>Postęp</th>
+            <th>Akcje</th>
+        </tr>
+        <!-- Tutaj będą pojawiać się dodane cele -->
+        <tr>
+            <td>Regularne Ćwiczenia Fizyczne</td>
+            <td><input type="checkbox" id="postep-cwiczenia" disabled></td>
+            <td><button type="button" onclick="zapiszPostep('postep-cwiczenia')">Zapisz Postęp</button></td>
+        </tr>
+        <tr>
+            <td>Zdrowa Dieta</td>
+            <td><input type="checkbox" id="postep-dieta" disabled></td>
+            <td><button type="button" onclick="zapiszPostep('postep-dieta')">Zapisz Postęp</button></td>
+        </tr>
+        <tr>
+            <td>Rozwój Umiejętności</td>
+            <td><input type="checkbox" id="postep-umiejetnosci" disabled></td>
+            <td><button type="button" onclick="zapiszPostep('postep-umiejetnosci')">Zapisz Postęp</button></td>
+        </tr>
+        <tr>
+            <td>Codzienna Chwila Relaksu</td>
+            <td><input type="checkbox" id="postep-relaks" disabled></td>
+            <td><button type="button" onclick="zapiszPostep('postep-relaks')">Zapisz Postęp</button></td>
+        </tr>
+        <tr>
+            <td>Rozbudowa Mojego Profilu o Zegarkach</td>
+            <td><input type="checkbox" id="postep-dzieki" disabled></td>
+            <td><button type="button" onclick="zapiszPostep('postep-dzieki')">Zapisz Postęp</button></td>
+        </tr>
+        <tr>
+            <td>50k na TikToku</td>
+            <td><input type="checkbox" id="postep-dzieki" disabled></td>
+            <td><button type="button" onclick="zapiszPostep('postep-dzieki')">Zapisz Postęp</button></td>
+        </tr>
+        <tr>
+            <td>10k Subów na YouTube</td>
+            <td><input type="checkbox" id="postep-dzieki" disabled></td>
+            <td><button type="button" onclick="zapiszPostep('postep-dzieki')">Zapisz Postęp</button></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="checkbox" id="postep-dzieki" disabled></td>
+            <td><button type="button" onclick="zapiszPostep('postep-dzieki')">Zapisz Postęp</button></td>
+        </tr>
+    </table>
+</section>
+
+
+<script>
+    function osiagnijCel(button) {
+        // Dodaj odpowiednią logikę do oznaczenia celu jako osiągnięty
+        const row = button.closest('tr');
+        row.classList.add('cel-osiagniety');
+        row.classList.remove('cel-nieosiagniety');
+    }
+
+    function nieosiagnijCel(button) {
+        // Dodaj odpowiednią logikę do oznaczenia celu jako nieosiągnięty
+        const row = button.closest('tr');
+        row.classList.add('cel-nieosiagniety');
+        row.classList.remove('cel-osiagniety');
+    }
+
+    function zapiszProgres(button) {
+        // Dodaj odpowiednią logikę do zapisania postępu w realizacji celu
+        const row = button.closest('tr');
+        alert('Postęp został zapisany!');
+    }
+</script>
+
+<script>
+    function usunPostanowanie(button) {
+        // Dodaj odpowiednią logikę do usunięcia postanowania
+        const row = button.closest('tr');
+        row.parentNode.removeChild(row);
+    }
+
+    function osiagnijCel(button) {
+        // Dodaj odpowiednią logikę do oznaczenia celu jako osiągnięty
+        const row = button.closest('tr');
+        row.classList.add('cel-osiagniety');
+    }
+
+    function zapiszProgres(button) {
+        // Dodaj odpowiednią logikę do zapisania postępu w realizacji celu
+        const row = button.closest('tr');
+        alert('Postęp został zapisany!');
+    }
+</script>
+
+<section id="moje-postanowienia-2024" class="fade-in">
+    <h2>Noworoczne Postanowienia na Rok 2024</h2>
+    <p>Tutaj znajdziesz swoje postanowienia na nadchodzący rok.</p>
+
+    <!-- Formularz Moich Postanowień na Rok 2024 -->
+    <form id="moje-postanowienia-form">
+        <textarea id="moje-postanowienia" name="moje-postanowienia" rows="4" placeholder="Wpisz swoje postanowienia na rok 2024..."></textarea><br><br>
+        <button type="submit">Dodaj postanowienie</button><br> <br>
+        <label for="moje-postanowienia">Twoje postanowienia na rok 2024:</label><br>
+
+    </form>
+
+    <!-- Lista Moich Postanowień na Rok 2024 -->
+    <ul id="lista-moich-postanowien">
+        <!-- Tutaj będą pojawiać się dodane postanowienia na rok 2024 -->
+    </ul>
+    <script>
+        const mojePostanowieniaForm = document.getElementById('moje-postanowienia-form');
+        const listaMoichPostanowien = document.getElementById('lista-moich-postanowien');
+        
+        // Pobranie Moich Postanowień na Rok 2024 z local storage
+        const savedMojePostanowienia = JSON.parse(localStorage.getItem('savedMojePostanowienia')) || [];
+        
+        // Funkcja usuwająca Moje Postanowienie na Rok 2024 z listy i z local storage
+        function removeMojePostanowienie(index) {
+            savedMojePostanowienia.splice(index, 1);
+            localStorage.setItem('savedMojePostanowienia', JSON.stringify(savedMojePostanowienia));
+            updateMojePostanowieniaList(); // Aktualizacja listy po usunięciu
+        }
+        
+        // Funkcja aktualizująca listę Moich Postanowień na Rok 2024
+        function updateMojePostanowieniaList() {
+            listaMoichPostanowien.innerHTML = ''; // Wyczyszczenie listy przed aktualizacją
+        
+            savedMojePostanowienia.forEach((mojePostanowienie, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = mojePostanowienie;
+        
+                // Przycisk usuwania
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Usuń';
+                removeButton.addEventListener('click', () => removeMojePostanowienie(index));
+        
+                listItem.appendChild(removeButton);
+                listaMoichPostanowien.appendChild(listItem);
+            });
+        }
+        
+        // Aktualizacja listy Moich Postanowień na Rok 2024 przy załadowaniu strony
+        updateMojePostanowieniaList();
+        
+        // Obsługa dodawania Moich Postanowień na Rok 2024
+        if (mojePostanowieniaForm && listaMoichPostanowien) {
+            mojePostanowieniaForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+        
+                const mojePostanowienieInput = document.getElementById('moje-postanowienia');
+                const mojePostanowienieValue = mojePostanowienieInput.value.trim();
+        
+                if (mojePostanowienieValue !== '') {
+                    // Dodanie do local storage
+                    savedMojePostanowienia.push(mojePostanowienieValue);
+                    localStorage.setItem('savedMojePostanowienia', JSON.stringify(savedMojePostanowienia));
+        
+                    // Aktualizacja listy na stronie
+                    updateMojePostanowieniaList();
+        
+                    // Wyczyszczenie pola po dodaniu do listy
+                    mojePostanowienieInput.value = '';
+                }
+            });
+        }
+    </script>
+</section>
+
+
+
+<section id="promocja-ebooka" class="fade-in">
+    <h2 class="white">Specjalna Promocja na Ebooka!</h2>
+    <p class="white">Jeżeli chcesz wesprzeć moją twórczość, możesz kupić mojego ebook w promocyjnej cenie <b class="red">9,99zł.</b></p>
+    <a href="https://1ct.eu/EyRXl" id="buy-link" class="buy-button fade-in">Kup Teraz</a>
+</section>
+
+
+
+    <footer class="fade-in">
+        &copy; 2024 ZegarkiDawida
+    </footer>
+
+</body>
+
+</html>
